@@ -1,0 +1,102 @@
+# Watch for new syntaqlite releases and update the Homebrew formula.
+# Runs on a schedule and can be triggered manually.
+name: Update Formula
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # every 6 hours
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Fetch latest release and update formula
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+
+          # Get latest release info
+          RELEASE=$(curl -s "https://api.github.com/repos/LalitMaganti/syntaqlite/releases/latest")
+          VERSION=$(echo "$RELEASE" | jq -r '.tag_name' | sed 's/^v//')
+          TAG=$(echo "$RELEASE" | jq -r '.tag_name')
+
+          if [ -z "$VERSION" ] || [ "$VERSION" = "null" ]; then
+            echo "No release found"
+            exit 0
+          fi
+
+          # Check if formula already up to date
+          if grep -q "version \"$VERSION\"" Formula/syntaqlite.rb 2>/dev/null; then
+            echo "Formula already at $VERSION"
+            exit 0
+          fi
+
+          echo "Updating formula to $VERSION"
+
+          # Download archives and compute sha256
+          get_sha() {
+            local url="$1"
+            curl -fsSL "$url" | sha256sum | cut -d' ' -f1
+          }
+
+          BASE="https://github.com/LalitMaganti/syntaqlite/releases/download/$TAG"
+
+          SHA_MACOS_ARM64=$(get_sha "$BASE/syntaqlite-macos-arm64.tar.gz")
+          SHA_MACOS_X64=$(get_sha "$BASE/syntaqlite-macos-x64.tar.gz")
+          SHA_LINUX_ARM64=$(get_sha "$BASE/syntaqlite-linux-arm64.tar.gz")
+          SHA_LINUX_X64=$(get_sha "$BASE/syntaqlite-linux-x64.tar.gz")
+
+          cat > Formula/syntaqlite.rb << FORMULA
+          class Syntaqlite < Formula
+            desc "Fast, accurate SQLite SQL formatter, validator, and language server"
+            homepage "https://syntaqlite.com"
+            version "$VERSION"
+            license "Apache-2.0"
+
+            on_macos do
+              if Hardware::CPU.arm?
+                url "$BASE/syntaqlite-macos-arm64.tar.gz"
+                sha256 "$SHA_MACOS_ARM64"
+              else
+                url "$BASE/syntaqlite-macos-x64.tar.gz"
+                sha256 "$SHA_MACOS_X64"
+              end
+            end
+
+            on_linux do
+              if Hardware::CPU.arm?
+                url "$BASE/syntaqlite-linux-arm64.tar.gz"
+                sha256 "$SHA_LINUX_ARM64"
+              else
+                url "$BASE/syntaqlite-linux-x64.tar.gz"
+                sha256 "$SHA_LINUX_X64"
+              end
+            end
+
+            def install
+              bin.install "syntaqlite"
+            end
+
+            test do
+              assert_match version.to_s, shell_output("#{bin}/syntaqlite --version")
+            end
+          end
+          FORMULA
+
+          # Remove leading whitespace from heredoc
+          sed -i 's/^          //' Formula/syntaqlite.rb
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Formula/
+          git diff --cached --quiet || {
+            VERSION=$(grep 'version "' Formula/syntaqlite.rb | head -1 | sed 's/.*version "//;s/"//')
+            git commit -m "Update syntaqlite to $VERSION"
+            git push
+          }
