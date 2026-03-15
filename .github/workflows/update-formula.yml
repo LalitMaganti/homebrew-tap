@@ -50,6 +50,7 @@ jobs:
           SHA_LINUX_ARM64=$(get_sha "$BASE/syntaqlite-linux-arm64.tar.gz")
           SHA_LINUX_X64=$(get_sha "$BASE/syntaqlite-linux-x64.tar.gz")
 
+          mkdir -p Formula
           cat > Formula/syntaqlite.rb << FORMULA
           class Syntaqlite < Formula
             desc "Fast, accurate SQLite SQL formatter, validator, and language server"
