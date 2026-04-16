@@ -1,26 +1,26 @@
 class Syntaqlite < Formula
   desc "Fast, accurate SQLite SQL formatter, validator, and language server"
   homepage "https://syntaqlite.com"
-  version "0.4.0"
+  version "0.4.1"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/LalitMaganti/syntaqlite/releases/download/v0.4.0/syntaqlite-macos-arm64.tar.gz"
-      sha256 "74de91950b0bd14fd1c09dff79d8f1a2a5d7de8c45e04d6ee55f923237d87c64"
+      url "https://github.com/LalitMaganti/syntaqlite/releases/download/v0.4.1/syntaqlite-macos-arm64.tar.gz"
+      sha256 "1475e3ed36f37abb9bac88b55539f1f98f5d1580da296e4ae4c78ee70a143d25"
     else
-      url "https://github.com/LalitMaganti/syntaqlite/releases/download/v0.4.0/syntaqlite-macos-x64.tar.gz"
-      sha256 "110fad9428364c0116c315139017b9122ffdfdebb7ea66092fb76c597d8f3856"
+      url "https://github.com/LalitMaganti/syntaqlite/releases/download/v0.4.1/syntaqlite-macos-x64.tar.gz"
+      sha256 "b124c8ca7e9c52f6be15d105349da1fb02a167c2bb01e668de7abc57b32bd855"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/LalitMaganti/syntaqlite/releases/download/v0.4.0/syntaqlite-linux-arm64.tar.gz"
-      sha256 "39a1cba0d150fd11e8bc8120795fe3b91a66b5d0edc66e488ab706c49cf6b389"
+      url "https://github.com/LalitMaganti/syntaqlite/releases/download/v0.4.1/syntaqlite-linux-arm64.tar.gz"
+      sha256 "4baa8e05b09400009ec1b7cdcc60b41499b4893573292b04f9c140b89e7d4e50"
     else
-      url "https://github.com/LalitMaganti/syntaqlite/releases/download/v0.4.0/syntaqlite-linux-x64.tar.gz"
-      sha256 "338e7e0fa837f9567d6a054e09cd9a87b4d2c731e8e6551a7c465330352a99f2"
+      url "https://github.com/LalitMaganti/syntaqlite/releases/download/v0.4.1/syntaqlite-linux-x64.tar.gz"
+      sha256 "4f36e118aecae98bef6e79540ec16469c6ff1967abdb0c0994063122e4baf321"
     end
   end
 
