@@ -1,25 +1,25 @@
 class Buildprof < Formula
   desc "Record Linux build processes and file access as a Perfetto trace"
   homepage "https://buildprof.lalitm.com"
-  version "0.2.1"
+  version "0.2.2"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.1/buildprof-aarch64-apple-darwin.tar.xz"
-      sha256 "5b85d8f2ef10f0332da039ecab39fa77273b8dbeaaca0f0fffdb8867b24a017b"
+      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.2/buildprof-aarch64-apple-darwin.tar.xz"
+      sha256 "15a812fa79db9f4ee2e9ada858bb13258da72762a1847c97e949ad096c7bf0c9"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.1/buildprof-x86_64-apple-darwin.tar.xz"
-      sha256 "9de329f1d7c2f68026196ce4727adc403e93cc6626bd55e827270cfb8d8cc2d8"
+      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.2/buildprof-x86_64-apple-darwin.tar.xz"
+      sha256 "1949da7e64a9b9f99cc05cfb108a2e77f559d810c7e758d89cc83d2b8f84adb0"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.1/buildprof-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "73ae7c6cd5c42b5f197efba57491df12174ead57e80ae9f6416413e5e1eda6c8"
+      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.2/buildprof-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "1159b310a8c33c74d0969741777841dd6ffea241981ffc0aff85bcfc990d6cb7"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.1/buildprof-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "eb56392dc0347b6ff4aa75d888ba330b69dea427c411d2e2b145b9eb1268125a"
+      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.2/buildprof-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "f93b63c3983f1dfc40bbfd646ae06257a701230366db2753062453529631db01"
     end
   end
   license "Apache-2.0"
