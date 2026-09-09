@@ -1,25 +1,25 @@
 class Buildprof < Formula
-  desc "Record Linux build processes and file access as a Perfetto trace"
+  desc "Records every process and file access in a build and shows it as an interactive timeline"
   homepage "https://buildprof.lalitm.com"
-  version "0.2.2"
+  version "0.2.3"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.2/buildprof-aarch64-apple-darwin.tar.xz"
-      sha256 "15a812fa79db9f4ee2e9ada858bb13258da72762a1847c97e949ad096c7bf0c9"
+      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.3/buildprof-aarch64-apple-darwin.tar.xz"
+      sha256 "9b581d1d659fef4d2125c54c82b563bdf61506482cdce96c93eebf6318e90055"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.2/buildprof-x86_64-apple-darwin.tar.xz"
-      sha256 "1949da7e64a9b9f99cc05cfb108a2e77f559d810c7e758d89cc83d2b8f84adb0"
+      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.3/buildprof-x86_64-apple-darwin.tar.xz"
+      sha256 "c1740f8fcd57a97997a3a27439896cb344be78d9b843e9ad3f75b3e26559faf0"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.2/buildprof-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "1159b310a8c33c74d0969741777841dd6ffea241981ffc0aff85bcfc990d6cb7"
+      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.3/buildprof-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "9c29d8fd22c4d2ecb49e130c173d7429bd7a62a738076e767c034b90218e5fdf"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.2/buildprof-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "f93b63c3983f1dfc40bbfd646ae06257a701230366db2753062453529631db01"
+      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.3/buildprof-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "bac8f25f70f6f68fbd56771f0db22f1790cd167fa787b30d940890d98f5afe15"
     end
   end
   license "Apache-2.0"
