@@ -1,25 +1,25 @@
 class Buildprof < Formula
   desc "Records every process and file access in a build and shows it as an interactive timeline"
   homepage "https://buildprof.lalitm.com"
-  version "0.2.5"
+  version "0.2.6"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.5/buildprof-aarch64-apple-darwin.tar.xz"
-      sha256 "dd4f3090caeedd04fc15c358443de6a697447fb59a30bb62134686be225088ed"
+      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.6/buildprof-aarch64-apple-darwin.tar.xz"
+      sha256 "5d3a4d97fc985af0f20a673ccd2d75e668dc752f9d4f5c76efdefc8eef8fa1de"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.5/buildprof-x86_64-apple-darwin.tar.xz"
-      sha256 "c2c6018acbdbf03c960603ae2e209772b3086c3d8891be3c0a0d6222a179a191"
+      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.6/buildprof-x86_64-apple-darwin.tar.xz"
+      sha256 "966a6c158376a74e7fa9aa3345aeeaa180005f34ace230fcd85448be073ebb88"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.5/buildprof-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "21c9821ad17f9dd261ff87cc182cdb9ebd1b7e69dff5aef8f64fc897e96df6f0"
+      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.6/buildprof-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "88a59d897a099f36637a8a4f8d095755e4f506f50018ed4dcb82d98ac47ef803"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.5/buildprof-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "88962b9ed2fcdd76dbc37f839fa3c0e66b2790f4c4770ed10bfa66ea62e3f279"
+      url "https://github.com/lalitmaganti/buildprof/releases/download/v0.2.6/buildprof-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "ec3f998853ec955c094585ddc8a7db21c91cc8ae5ee27c7c9d9c0da23a58c2aa"
     end
   end
   license "Apache-2.0"
